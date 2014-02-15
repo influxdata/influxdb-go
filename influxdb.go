@@ -207,20 +207,20 @@ type Series struct {
 	Points  [][]interface{} `json:"points"`
 }
 
-type TimePrecision string
+type timePrecision string
 
 const (
-	Second      TimePrecision = "s"
-	Millisecond TimePrecision = "m"
-	Microsecond TimePrecision = "u"
+	Second      timePrecision = "s"
+	Millisecond timePrecision = "m"
+	Microsecond timePrecision = "u"
 )
 
 func (self *Client) WriteSeries(series []*Series) error {
 	return self.writeSeriesCommon(series, nil)
 }
 
-func (self *Client) WriteSeriesWithTimePrecision(series []*Series, timePrecision TimePrecision) error {
-	return self.writeSeriesCommon(series, map[string]string{"time_precision": string(timePrecision)})
+func (self *Client) WriteSeriesWithTimePrecision(series []*Series, timeprecision timePrecision) error {
+	return self.writeSeriesCommon(series, map[string]string{"time_precision": string(timeprecision)})
 }
 
 func (self *Client) writeSeriesCommon(series []*Series, options map[string]string) error {
